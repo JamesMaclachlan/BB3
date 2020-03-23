@@ -1,4 +1,5 @@
 require_relative 'bike'
+require_relative 'van'
 
 class DockingStation
 
@@ -12,7 +13,7 @@ class DockingStation
   end
 
   def release_bike
-    fail 'No bikes available' if empty?
+    fail 'No bikes available' if empty? || bikes.all?(&:broken?)
     bikes.pop
   end
 
